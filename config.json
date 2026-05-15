@@ -1,0 +1,59 @@
+{
+  "task": "CLASSIFICATION",
+  "project_name": "Ezaki_Class_226",
+  "project_description": "Ezaki_Class_226",
+  "dataset": {
+    "data_mode": "mixed_pool",
+    "names": {
+      "mixed": [
+        "228"
+      ],
+      "train": [],
+      "val": [],
+      "test": []
+    },
+    "split": {
+      "train": 0.7,
+      "val": 0.2,
+      "test": 0.1
+    }
+  },
+  "run_mode": "Normal",
+  "config_name": "NewConfig-260226-120334",
+  "config_description": null,
+  "config": {
+    "model": {
+      "model_name": "MobileNet V2",
+      "model_variant": "_1.0_224",
+      "load_pretrained_weight": "ImageNet-1k",
+      "finetune": false,
+      "resume_from_checkpoint": false
+    },
+    "training": {
+      "total_epochs": 20,
+      "optimizer": "AdamW",
+      "learning_rate": {
+        "scheduler_type": "reduce_lr_on_plateau",
+        "learning_rate": 0.0001,
+        "warmup_ratio": 0.1,
+        "lr_scheduler_kwargs": {
+          "factor": 0.1,
+          "patience": 5,
+          "threshold": 0.0001
+        }
+      }
+    },
+    "preprocess": {
+      "input_size": [
+        224,
+        224
+      ],
+      "batch_size": 32,
+      "auto_find_batch_size": false,
+      "balance_class": true,
+      "random_seed": 42,
+      "normalize": true
+    },
+    "augmentation": []
+  }
+}
